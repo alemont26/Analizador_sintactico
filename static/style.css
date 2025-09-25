@@ -1,0 +1,100 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9ff 0%, #e6f2ff 100%);
+    color: #2c3e50;
+    line-height: 1.6;
+}
+h1 {
+    color: #1a237e;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 2.2em;
+    font-weight: 300;
+}
+h2 {
+    color: #3949ab;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    font-weight: 400;
+}
+p {
+    color: #546e7a;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 1.1em;
+}
+form {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    border: 1px solid #e1e8ed;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+textarea {
+    font-family: 'Consolas', 'Monaco', monospace;
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    background-color: #fafbfc;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+button {
+    background: #5c6bc0;
+    color: #ffffff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+button:hover {
+    background: #3f51b5;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+th, td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #f0f4f7;
+}
+th {
+    background-color: #e8eaf6;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.errores-globales {
+    background-color: #ffebee;
+    border: 1px solid #c62828;
+    color: #c62828;
+    padding: 15px;
+    border-radius: 8px;
+}
+.ast-correcto {
+    background-color: #e8f5e9;
+    border: 1px solid #4caf50;
+    color: #2e7d32;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}

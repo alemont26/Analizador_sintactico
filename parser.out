@@ -1,0 +1,987 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> sentencias
+Rule 2     sentencias -> sentencia sentencias
+Rule 3     sentencias -> sentencia
+Rule 4     sentencias -> <empty>
+Rule 5     sentencia -> sentencia_for
+Rule 6     sentencia -> asignacion PUNTOYCOMA
+Rule 7     sentencia -> llamada_funcion PUNTOYCOMA
+Rule 8     sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+Rule 9     asignacion -> ID IGUAL NUMERO
+Rule 10    asignacion -> ID IGUAL ID
+Rule 11    condicion -> ID MAYORIGUAL NUMERO
+Rule 12    condicion -> ID MENOR NUMERO
+Rule 13    condicion -> ID MAYOR NUMERO
+Rule 14    condicion -> ID MENORIGUAL NUMERO
+Rule 15    condicion -> ID IGUAL NUMERO
+Rule 16    incremento -> ID MASMAS
+Rule 17    incremento -> ID MENOSMENOS
+Rule 18    incremento -> ID IGUAL ID OPERADOR NUMERO
+Rule 19    incremento -> ID OPERADOR OPERADOR
+Rule 20    cuerpo -> sentencias
+Rule 21    llamada_funcion -> SYSTEM PUNTO PRINT PARENTESIS_IZQ parametros PARENTESIS_DER
+Rule 22    parametros -> CADENA COMA ID
+Rule 23    parametros -> CADENA
+Rule 24    parametros -> ID
+Rule 25    parametros -> NUMERO
+Rule 26    parametros -> <empty>
+Rule 27    sentencia -> NUMERO ID IGUAL NUMERO PUNTOYCOMA
+Rule 28    asignacion -> NUMERO ID
+Rule 29    asignacion -> OPERADOR NUMERO
+Rule 30    asignacion -> ID ID
+Rule 31    sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER
+Rule 32    sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+Rule 33    llamada_funcion -> SYSTEM PUNTO PRINT parametros PARENTESIS_DER
+
+Terminals, with rules where they appear
+
+CADENA               : 22 23
+COMA                 : 22
+FOR                  : 8 31 32
+ID                   : 9 10 10 11 12 13 14 15 16 17 18 18 19 22 24 27 28 30 30
+IGUAL                : 9 10 15 18 27
+LLAVE_DER            : 8 31 31 32
+LLAVE_IZQ            : 8 31 31 32
+MASMAS               : 16
+MAYOR                : 13
+MAYORIGUAL           : 11
+MENOR                : 12
+MENORIGUAL           : 14
+MENOSMENOS           : 17
+NUMERO               : 9 11 12 13 14 15 18 25 27 27 28 29
+OPERADOR             : 18 19 19 29
+PARENTESIS_DER       : 8 21 32 33
+PARENTESIS_IZQ       : 8 21 32
+PRINT                : 21 33
+PUNTO                : 21 33
+PUNTOYCOMA           : 6 7 8 8 27 31 31 32
+SYSTEM               : 21 33
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion           : 6 8 31 32
+condicion            : 8 31 32
+cuerpo               : 8 31 32
+incremento           : 8 31 32
+llamada_funcion      : 7
+parametros           : 21 33
+programa             : 0
+sentencia            : 2 3
+sentencia_for        : 5
+sentencias           : 1 2 20
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . sentencias
+    (2) sentencias -> . sentencia sentencias
+    (3) sentencias -> . sentencia
+    (4) sentencias -> .
+    (5) sentencia -> . sentencia_for
+    (6) sentencia -> . asignacion PUNTOYCOMA
+    (7) sentencia -> . llamada_funcion PUNTOYCOMA
+    (27) sentencia -> . NUMERO ID IGUAL NUMERO PUNTOYCOMA
+    (8) sentencia_for -> . FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (31) sentencia_for -> . FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (32) sentencia_for -> . FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (9) asignacion -> . ID IGUAL NUMERO
+    (10) asignacion -> . ID IGUAL ID
+    (28) asignacion -> . NUMERO ID
+    (29) asignacion -> . OPERADOR NUMERO
+    (30) asignacion -> . ID ID
+    (21) llamada_funcion -> . SYSTEM PUNTO PRINT PARENTESIS_IZQ parametros PARENTESIS_DER
+    (33) llamada_funcion -> . SYSTEM PUNTO PRINT parametros PARENTESIS_DER
+
+    $end            reduce using rule 4 (sentencias -> .)
+    NUMERO          shift and go to state 7
+    FOR             shift and go to state 9
+    ID              shift and go to state 8
+    OPERADOR        shift and go to state 10
+    SYSTEM          shift and go to state 11
+
+    programa                       shift and go to state 1
+    sentencias                     shift and go to state 2
+    sentencia                      shift and go to state 3
+    sentencia_for                  shift and go to state 4
+    asignacion                     shift and go to state 5
+    llamada_funcion                shift and go to state 6
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> sentencias .
+
+    $end            reduce using rule 1 (programa -> sentencias .)
+
+
+state 3
+
+    (2) sentencias -> sentencia . sentencias
+    (3) sentencias -> sentencia .
+    (2) sentencias -> . sentencia sentencias
+    (3) sentencias -> . sentencia
+    (4) sentencias -> .
+    (5) sentencia -> . sentencia_for
+    (6) sentencia -> . asignacion PUNTOYCOMA
+    (7) sentencia -> . llamada_funcion PUNTOYCOMA
+    (27) sentencia -> . NUMERO ID IGUAL NUMERO PUNTOYCOMA
+    (8) sentencia_for -> . FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (31) sentencia_for -> . FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (32) sentencia_for -> . FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (9) asignacion -> . ID IGUAL NUMERO
+    (10) asignacion -> . ID IGUAL ID
+    (28) asignacion -> . NUMERO ID
+    (29) asignacion -> . OPERADOR NUMERO
+    (30) asignacion -> . ID ID
+    (21) llamada_funcion -> . SYSTEM PUNTO PRINT PARENTESIS_IZQ parametros PARENTESIS_DER
+    (33) llamada_funcion -> . SYSTEM PUNTO PRINT parametros PARENTESIS_DER
+
+  ! reduce/reduce conflict for $end resolved using rule 3 (sentencias -> sentencia .)
+  ! reduce/reduce conflict for LLAVE_DER resolved using rule 3 (sentencias -> sentencia .)
+    $end            reduce using rule 3 (sentencias -> sentencia .)
+    LLAVE_DER       reduce using rule 3 (sentencias -> sentencia .)
+    NUMERO          shift and go to state 7
+    FOR             shift and go to state 9
+    ID              shift and go to state 8
+    OPERADOR        shift and go to state 10
+    SYSTEM          shift and go to state 11
+
+  ! $end            [ reduce using rule 4 (sentencias -> .) ]
+  ! LLAVE_DER       [ reduce using rule 4 (sentencias -> .) ]
+
+    sentencia                      shift and go to state 3
+    sentencias                     shift and go to state 12
+    sentencia_for                  shift and go to state 4
+    asignacion                     shift and go to state 5
+    llamada_funcion                shift and go to state 6
+
+state 4
+
+    (5) sentencia -> sentencia_for .
+
+    NUMERO          reduce using rule 5 (sentencia -> sentencia_for .)
+    FOR             reduce using rule 5 (sentencia -> sentencia_for .)
+    ID              reduce using rule 5 (sentencia -> sentencia_for .)
+    OPERADOR        reduce using rule 5 (sentencia -> sentencia_for .)
+    SYSTEM          reduce using rule 5 (sentencia -> sentencia_for .)
+    $end            reduce using rule 5 (sentencia -> sentencia_for .)
+    LLAVE_DER       reduce using rule 5 (sentencia -> sentencia_for .)
+
+
+state 5
+
+    (6) sentencia -> asignacion . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 13
+
+
+state 6
+
+    (7) sentencia -> llamada_funcion . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 14
+
+
+state 7
+
+    (27) sentencia -> NUMERO . ID IGUAL NUMERO PUNTOYCOMA
+    (28) asignacion -> NUMERO . ID
+
+    ID              shift and go to state 15
+
+
+state 8
+
+    (9) asignacion -> ID . IGUAL NUMERO
+    (10) asignacion -> ID . IGUAL ID
+    (30) asignacion -> ID . ID
+
+    IGUAL           shift and go to state 17
+    ID              shift and go to state 16
+
+
+state 9
+
+    (8) sentencia_for -> FOR . PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (31) sentencia_for -> FOR . LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (32) sentencia_for -> FOR . PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+
+    PARENTESIS_IZQ  shift and go to state 18
+    LLAVE_IZQ       shift and go to state 19
+
+
+state 10
+
+    (29) asignacion -> OPERADOR . NUMERO
+
+    NUMERO          shift and go to state 20
+
+
+state 11
+
+    (21) llamada_funcion -> SYSTEM . PUNTO PRINT PARENTESIS_IZQ parametros PARENTESIS_DER
+    (33) llamada_funcion -> SYSTEM . PUNTO PRINT parametros PARENTESIS_DER
+
+    PUNTO           shift and go to state 21
+
+
+state 12
+
+    (2) sentencias -> sentencia sentencias .
+
+    $end            reduce using rule 2 (sentencias -> sentencia sentencias .)
+    LLAVE_DER       reduce using rule 2 (sentencias -> sentencia sentencias .)
+
+
+state 13
+
+    (6) sentencia -> asignacion PUNTOYCOMA .
+
+    NUMERO          reduce using rule 6 (sentencia -> asignacion PUNTOYCOMA .)
+    FOR             reduce using rule 6 (sentencia -> asignacion PUNTOYCOMA .)
+    ID              reduce using rule 6 (sentencia -> asignacion PUNTOYCOMA .)
+    OPERADOR        reduce using rule 6 (sentencia -> asignacion PUNTOYCOMA .)
+    SYSTEM          reduce using rule 6 (sentencia -> asignacion PUNTOYCOMA .)
+    $end            reduce using rule 6 (sentencia -> asignacion PUNTOYCOMA .)
+    LLAVE_DER       reduce using rule 6 (sentencia -> asignacion PUNTOYCOMA .)
+
+
+state 14
+
+    (7) sentencia -> llamada_funcion PUNTOYCOMA .
+
+    NUMERO          reduce using rule 7 (sentencia -> llamada_funcion PUNTOYCOMA .)
+    FOR             reduce using rule 7 (sentencia -> llamada_funcion PUNTOYCOMA .)
+    ID              reduce using rule 7 (sentencia -> llamada_funcion PUNTOYCOMA .)
+    OPERADOR        reduce using rule 7 (sentencia -> llamada_funcion PUNTOYCOMA .)
+    SYSTEM          reduce using rule 7 (sentencia -> llamada_funcion PUNTOYCOMA .)
+    $end            reduce using rule 7 (sentencia -> llamada_funcion PUNTOYCOMA .)
+    LLAVE_DER       reduce using rule 7 (sentencia -> llamada_funcion PUNTOYCOMA .)
+
+
+state 15
+
+    (27) sentencia -> NUMERO ID . IGUAL NUMERO PUNTOYCOMA
+    (28) asignacion -> NUMERO ID .
+
+    IGUAL           shift and go to state 22
+    PUNTOYCOMA      reduce using rule 28 (asignacion -> NUMERO ID .)
+
+
+state 16
+
+    (30) asignacion -> ID ID .
+
+    PUNTOYCOMA      reduce using rule 30 (asignacion -> ID ID .)
+    ID              reduce using rule 30 (asignacion -> ID ID .)
+
+
+state 17
+
+    (9) asignacion -> ID IGUAL . NUMERO
+    (10) asignacion -> ID IGUAL . ID
+
+    NUMERO          shift and go to state 24
+    ID              shift and go to state 23
+
+
+state 18
+
+    (8) sentencia_for -> FOR PARENTESIS_IZQ . asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (32) sentencia_for -> FOR PARENTESIS_IZQ . asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (9) asignacion -> . ID IGUAL NUMERO
+    (10) asignacion -> . ID IGUAL ID
+    (28) asignacion -> . NUMERO ID
+    (29) asignacion -> . OPERADOR NUMERO
+    (30) asignacion -> . ID ID
+
+    ID              shift and go to state 8
+    NUMERO          shift and go to state 26
+    OPERADOR        shift and go to state 10
+
+    asignacion                     shift and go to state 25
+
+state 19
+
+    (31) sentencia_for -> FOR LLAVE_IZQ . asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (9) asignacion -> . ID IGUAL NUMERO
+    (10) asignacion -> . ID IGUAL ID
+    (28) asignacion -> . NUMERO ID
+    (29) asignacion -> . OPERADOR NUMERO
+    (30) asignacion -> . ID ID
+
+    ID              shift and go to state 8
+    NUMERO          shift and go to state 26
+    OPERADOR        shift and go to state 10
+
+    asignacion                     shift and go to state 27
+
+state 20
+
+    (29) asignacion -> OPERADOR NUMERO .
+
+    PUNTOYCOMA      reduce using rule 29 (asignacion -> OPERADOR NUMERO .)
+    ID              reduce using rule 29 (asignacion -> OPERADOR NUMERO .)
+
+
+state 21
+
+    (21) llamada_funcion -> SYSTEM PUNTO . PRINT PARENTESIS_IZQ parametros PARENTESIS_DER
+    (33) llamada_funcion -> SYSTEM PUNTO . PRINT parametros PARENTESIS_DER
+
+    PRINT           shift and go to state 28
+
+
+state 22
+
+    (27) sentencia -> NUMERO ID IGUAL . NUMERO PUNTOYCOMA
+
+    NUMERO          shift and go to state 29
+
+
+state 23
+
+    (10) asignacion -> ID IGUAL ID .
+
+    PUNTOYCOMA      reduce using rule 10 (asignacion -> ID IGUAL ID .)
+    ID              reduce using rule 10 (asignacion -> ID IGUAL ID .)
+
+
+state 24
+
+    (9) asignacion -> ID IGUAL NUMERO .
+
+    PUNTOYCOMA      reduce using rule 9 (asignacion -> ID IGUAL NUMERO .)
+    ID              reduce using rule 9 (asignacion -> ID IGUAL NUMERO .)
+
+
+state 25
+
+    (8) sentencia_for -> FOR PARENTESIS_IZQ asignacion . PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (32) sentencia_for -> FOR PARENTESIS_IZQ asignacion . condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (11) condicion -> . ID MAYORIGUAL NUMERO
+    (12) condicion -> . ID MENOR NUMERO
+    (13) condicion -> . ID MAYOR NUMERO
+    (14) condicion -> . ID MENORIGUAL NUMERO
+    (15) condicion -> . ID IGUAL NUMERO
+
+    PUNTOYCOMA      shift and go to state 30
+    ID              shift and go to state 32
+
+    condicion                      shift and go to state 31
+
+state 26
+
+    (28) asignacion -> NUMERO . ID
+
+    ID              shift and go to state 33
+
+
+state 27
+
+    (31) sentencia_for -> FOR LLAVE_IZQ asignacion . PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER
+
+    PUNTOYCOMA      shift and go to state 34
+
+
+state 28
+
+    (21) llamada_funcion -> SYSTEM PUNTO PRINT . PARENTESIS_IZQ parametros PARENTESIS_DER
+    (33) llamada_funcion -> SYSTEM PUNTO PRINT . parametros PARENTESIS_DER
+    (22) parametros -> . CADENA COMA ID
+    (23) parametros -> . CADENA
+    (24) parametros -> . ID
+    (25) parametros -> . NUMERO
+    (26) parametros -> .
+
+    PARENTESIS_IZQ  shift and go to state 35
+    CADENA          shift and go to state 37
+    ID              shift and go to state 38
+    NUMERO          shift and go to state 39
+    PARENTESIS_DER  reduce using rule 26 (parametros -> .)
+
+    parametros                     shift and go to state 36
+
+state 29
+
+    (27) sentencia -> NUMERO ID IGUAL NUMERO . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 40
+
+
+state 30
+
+    (8) sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA . condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (11) condicion -> . ID MAYORIGUAL NUMERO
+    (12) condicion -> . ID MENOR NUMERO
+    (13) condicion -> . ID MAYOR NUMERO
+    (14) condicion -> . ID MENORIGUAL NUMERO
+    (15) condicion -> . ID IGUAL NUMERO
+
+    ID              shift and go to state 32
+
+    condicion                      shift and go to state 41
+
+state 31
+
+    (32) sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion . PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+
+    PUNTOYCOMA      shift and go to state 42
+
+
+state 32
+
+    (11) condicion -> ID . MAYORIGUAL NUMERO
+    (12) condicion -> ID . MENOR NUMERO
+    (13) condicion -> ID . MAYOR NUMERO
+    (14) condicion -> ID . MENORIGUAL NUMERO
+    (15) condicion -> ID . IGUAL NUMERO
+
+    MAYORIGUAL      shift and go to state 43
+    MENOR           shift and go to state 44
+    MAYOR           shift and go to state 45
+    MENORIGUAL      shift and go to state 46
+    IGUAL           shift and go to state 47
+
+
+state 33
+
+    (28) asignacion -> NUMERO ID .
+
+    PUNTOYCOMA      reduce using rule 28 (asignacion -> NUMERO ID .)
+    ID              reduce using rule 28 (asignacion -> NUMERO ID .)
+
+
+state 34
+
+    (31) sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA . condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (11) condicion -> . ID MAYORIGUAL NUMERO
+    (12) condicion -> . ID MENOR NUMERO
+    (13) condicion -> . ID MAYOR NUMERO
+    (14) condicion -> . ID MENORIGUAL NUMERO
+    (15) condicion -> . ID IGUAL NUMERO
+
+    ID              shift and go to state 32
+
+    condicion                      shift and go to state 48
+
+state 35
+
+    (21) llamada_funcion -> SYSTEM PUNTO PRINT PARENTESIS_IZQ . parametros PARENTESIS_DER
+    (22) parametros -> . CADENA COMA ID
+    (23) parametros -> . CADENA
+    (24) parametros -> . ID
+    (25) parametros -> . NUMERO
+    (26) parametros -> .
+
+    CADENA          shift and go to state 37
+    ID              shift and go to state 38
+    NUMERO          shift and go to state 39
+    PARENTESIS_DER  reduce using rule 26 (parametros -> .)
+
+    parametros                     shift and go to state 49
+
+state 36
+
+    (33) llamada_funcion -> SYSTEM PUNTO PRINT parametros . PARENTESIS_DER
+
+    PARENTESIS_DER  shift and go to state 50
+
+
+state 37
+
+    (22) parametros -> CADENA . COMA ID
+    (23) parametros -> CADENA .
+
+    COMA            shift and go to state 51
+    PARENTESIS_DER  reduce using rule 23 (parametros -> CADENA .)
+
+
+state 38
+
+    (24) parametros -> ID .
+
+    PARENTESIS_DER  reduce using rule 24 (parametros -> ID .)
+
+
+state 39
+
+    (25) parametros -> NUMERO .
+
+    PARENTESIS_DER  reduce using rule 25 (parametros -> NUMERO .)
+
+
+state 40
+
+    (27) sentencia -> NUMERO ID IGUAL NUMERO PUNTOYCOMA .
+
+    NUMERO          reduce using rule 27 (sentencia -> NUMERO ID IGUAL NUMERO PUNTOYCOMA .)
+    FOR             reduce using rule 27 (sentencia -> NUMERO ID IGUAL NUMERO PUNTOYCOMA .)
+    ID              reduce using rule 27 (sentencia -> NUMERO ID IGUAL NUMERO PUNTOYCOMA .)
+    OPERADOR        reduce using rule 27 (sentencia -> NUMERO ID IGUAL NUMERO PUNTOYCOMA .)
+    SYSTEM          reduce using rule 27 (sentencia -> NUMERO ID IGUAL NUMERO PUNTOYCOMA .)
+    $end            reduce using rule 27 (sentencia -> NUMERO ID IGUAL NUMERO PUNTOYCOMA .)
+    LLAVE_DER       reduce using rule 27 (sentencia -> NUMERO ID IGUAL NUMERO PUNTOYCOMA .)
+
+
+state 41
+
+    (8) sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion . PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+
+    PUNTOYCOMA      shift and go to state 52
+
+
+state 42
+
+    (32) sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA . incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (16) incremento -> . ID MASMAS
+    (17) incremento -> . ID MENOSMENOS
+    (18) incremento -> . ID IGUAL ID OPERADOR NUMERO
+    (19) incremento -> . ID OPERADOR OPERADOR
+
+    ID              shift and go to state 54
+
+    incremento                     shift and go to state 53
+
+state 43
+
+    (11) condicion -> ID MAYORIGUAL . NUMERO
+
+    NUMERO          shift and go to state 55
+
+
+state 44
+
+    (12) condicion -> ID MENOR . NUMERO
+
+    NUMERO          shift and go to state 56
+
+
+state 45
+
+    (13) condicion -> ID MAYOR . NUMERO
+
+    NUMERO          shift and go to state 57
+
+
+state 46
+
+    (14) condicion -> ID MENORIGUAL . NUMERO
+
+    NUMERO          shift and go to state 58
+
+
+state 47
+
+    (15) condicion -> ID IGUAL . NUMERO
+
+    NUMERO          shift and go to state 59
+
+
+state 48
+
+    (31) sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion . PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER
+
+    PUNTOYCOMA      shift and go to state 60
+
+
+state 49
+
+    (21) llamada_funcion -> SYSTEM PUNTO PRINT PARENTESIS_IZQ parametros . PARENTESIS_DER
+
+    PARENTESIS_DER  shift and go to state 61
+
+
+state 50
+
+    (33) llamada_funcion -> SYSTEM PUNTO PRINT parametros PARENTESIS_DER .
+
+    PUNTOYCOMA      reduce using rule 33 (llamada_funcion -> SYSTEM PUNTO PRINT parametros PARENTESIS_DER .)
+
+
+state 51
+
+    (22) parametros -> CADENA COMA . ID
+
+    ID              shift and go to state 62
+
+
+state 52
+
+    (8) sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA . incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (16) incremento -> . ID MASMAS
+    (17) incremento -> . ID MENOSMENOS
+    (18) incremento -> . ID IGUAL ID OPERADOR NUMERO
+    (19) incremento -> . ID OPERADOR OPERADOR
+
+    ID              shift and go to state 54
+
+    incremento                     shift and go to state 63
+
+state 53
+
+    (32) sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento . PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+
+    PARENTESIS_DER  shift and go to state 64
+
+
+state 54
+
+    (16) incremento -> ID . MASMAS
+    (17) incremento -> ID . MENOSMENOS
+    (18) incremento -> ID . IGUAL ID OPERADOR NUMERO
+    (19) incremento -> ID . OPERADOR OPERADOR
+
+    MASMAS          shift and go to state 65
+    MENOSMENOS      shift and go to state 66
+    IGUAL           shift and go to state 67
+    OPERADOR        shift and go to state 68
+
+
+state 55
+
+    (11) condicion -> ID MAYORIGUAL NUMERO .
+
+    PUNTOYCOMA      reduce using rule 11 (condicion -> ID MAYORIGUAL NUMERO .)
+
+
+state 56
+
+    (12) condicion -> ID MENOR NUMERO .
+
+    PUNTOYCOMA      reduce using rule 12 (condicion -> ID MENOR NUMERO .)
+
+
+state 57
+
+    (13) condicion -> ID MAYOR NUMERO .
+
+    PUNTOYCOMA      reduce using rule 13 (condicion -> ID MAYOR NUMERO .)
+
+
+state 58
+
+    (14) condicion -> ID MENORIGUAL NUMERO .
+
+    PUNTOYCOMA      reduce using rule 14 (condicion -> ID MENORIGUAL NUMERO .)
+
+
+state 59
+
+    (15) condicion -> ID IGUAL NUMERO .
+
+    PUNTOYCOMA      reduce using rule 15 (condicion -> ID IGUAL NUMERO .)
+
+
+state 60
+
+    (31) sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA . incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (16) incremento -> . ID MASMAS
+    (17) incremento -> . ID MENOSMENOS
+    (18) incremento -> . ID IGUAL ID OPERADOR NUMERO
+    (19) incremento -> . ID OPERADOR OPERADOR
+
+    ID              shift and go to state 54
+
+    incremento                     shift and go to state 69
+
+state 61
+
+    (21) llamada_funcion -> SYSTEM PUNTO PRINT PARENTESIS_IZQ parametros PARENTESIS_DER .
+
+    PUNTOYCOMA      reduce using rule 21 (llamada_funcion -> SYSTEM PUNTO PRINT PARENTESIS_IZQ parametros PARENTESIS_DER .)
+
+
+state 62
+
+    (22) parametros -> CADENA COMA ID .
+
+    PARENTESIS_DER  reduce using rule 22 (parametros -> CADENA COMA ID .)
+
+
+state 63
+
+    (8) sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento . PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+
+    PARENTESIS_DER  shift and go to state 70
+
+
+state 64
+
+    (32) sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER . LLAVE_IZQ cuerpo LLAVE_DER
+
+    LLAVE_IZQ       shift and go to state 71
+
+
+state 65
+
+    (16) incremento -> ID MASMAS .
+
+    PARENTESIS_DER  reduce using rule 16 (incremento -> ID MASMAS .)
+    LLAVE_DER       reduce using rule 16 (incremento -> ID MASMAS .)
+
+
+state 66
+
+    (17) incremento -> ID MENOSMENOS .
+
+    PARENTESIS_DER  reduce using rule 17 (incremento -> ID MENOSMENOS .)
+    LLAVE_DER       reduce using rule 17 (incremento -> ID MENOSMENOS .)
+
+
+state 67
+
+    (18) incremento -> ID IGUAL . ID OPERADOR NUMERO
+
+    ID              shift and go to state 72
+
+
+state 68
+
+    (19) incremento -> ID OPERADOR . OPERADOR
+
+    OPERADOR        shift and go to state 73
+
+
+state 69
+
+    (31) sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento . LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER
+
+    LLAVE_DER       shift and go to state 74
+
+
+state 70
+
+    (8) sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER . LLAVE_IZQ cuerpo LLAVE_DER
+
+    LLAVE_IZQ       shift and go to state 75
+
+
+state 71
+
+    (32) sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ . cuerpo LLAVE_DER
+    (20) cuerpo -> . sentencias
+    (2) sentencias -> . sentencia sentencias
+    (3) sentencias -> . sentencia
+    (4) sentencias -> .
+    (5) sentencia -> . sentencia_for
+    (6) sentencia -> . asignacion PUNTOYCOMA
+    (7) sentencia -> . llamada_funcion PUNTOYCOMA
+    (27) sentencia -> . NUMERO ID IGUAL NUMERO PUNTOYCOMA
+    (8) sentencia_for -> . FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (31) sentencia_for -> . FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (32) sentencia_for -> . FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (9) asignacion -> . ID IGUAL NUMERO
+    (10) asignacion -> . ID IGUAL ID
+    (28) asignacion -> . NUMERO ID
+    (29) asignacion -> . OPERADOR NUMERO
+    (30) asignacion -> . ID ID
+    (21) llamada_funcion -> . SYSTEM PUNTO PRINT PARENTESIS_IZQ parametros PARENTESIS_DER
+    (33) llamada_funcion -> . SYSTEM PUNTO PRINT parametros PARENTESIS_DER
+
+    LLAVE_DER       reduce using rule 4 (sentencias -> .)
+    NUMERO          shift and go to state 7
+    FOR             shift and go to state 9
+    ID              shift and go to state 8
+    OPERADOR        shift and go to state 10
+    SYSTEM          shift and go to state 11
+
+    asignacion                     shift and go to state 5
+    cuerpo                         shift and go to state 76
+    sentencias                     shift and go to state 77
+    sentencia                      shift and go to state 3
+    sentencia_for                  shift and go to state 4
+    llamada_funcion                shift and go to state 6
+
+state 72
+
+    (18) incremento -> ID IGUAL ID . OPERADOR NUMERO
+
+    OPERADOR        shift and go to state 78
+
+
+state 73
+
+    (19) incremento -> ID OPERADOR OPERADOR .
+
+    PARENTESIS_DER  reduce using rule 19 (incremento -> ID OPERADOR OPERADOR .)
+    LLAVE_DER       reduce using rule 19 (incremento -> ID OPERADOR OPERADOR .)
+
+
+state 74
+
+    (31) sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER . LLAVE_IZQ cuerpo LLAVE_DER
+
+    LLAVE_IZQ       shift and go to state 79
+
+
+state 75
+
+    (8) sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ . cuerpo LLAVE_DER
+    (20) cuerpo -> . sentencias
+    (2) sentencias -> . sentencia sentencias
+    (3) sentencias -> . sentencia
+    (4) sentencias -> .
+    (5) sentencia -> . sentencia_for
+    (6) sentencia -> . asignacion PUNTOYCOMA
+    (7) sentencia -> . llamada_funcion PUNTOYCOMA
+    (27) sentencia -> . NUMERO ID IGUAL NUMERO PUNTOYCOMA
+    (8) sentencia_for -> . FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (31) sentencia_for -> . FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (32) sentencia_for -> . FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (9) asignacion -> . ID IGUAL NUMERO
+    (10) asignacion -> . ID IGUAL ID
+    (28) asignacion -> . NUMERO ID
+    (29) asignacion -> . OPERADOR NUMERO
+    (30) asignacion -> . ID ID
+    (21) llamada_funcion -> . SYSTEM PUNTO PRINT PARENTESIS_IZQ parametros PARENTESIS_DER
+    (33) llamada_funcion -> . SYSTEM PUNTO PRINT parametros PARENTESIS_DER
+
+    LLAVE_DER       reduce using rule 4 (sentencias -> .)
+    NUMERO          shift and go to state 7
+    FOR             shift and go to state 9
+    ID              shift and go to state 8
+    OPERADOR        shift and go to state 10
+    SYSTEM          shift and go to state 11
+
+    asignacion                     shift and go to state 5
+    cuerpo                         shift and go to state 80
+    sentencias                     shift and go to state 77
+    sentencia                      shift and go to state 3
+    sentencia_for                  shift and go to state 4
+    llamada_funcion                shift and go to state 6
+
+state 76
+
+    (32) sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo . LLAVE_DER
+
+    LLAVE_DER       shift and go to state 81
+
+
+state 77
+
+    (20) cuerpo -> sentencias .
+
+    LLAVE_DER       reduce using rule 20 (cuerpo -> sentencias .)
+
+
+state 78
+
+    (18) incremento -> ID IGUAL ID OPERADOR . NUMERO
+
+    NUMERO          shift and go to state 82
+
+
+state 79
+
+    (31) sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ . cuerpo LLAVE_DER
+    (20) cuerpo -> . sentencias
+    (2) sentencias -> . sentencia sentencias
+    (3) sentencias -> . sentencia
+    (4) sentencias -> .
+    (5) sentencia -> . sentencia_for
+    (6) sentencia -> . asignacion PUNTOYCOMA
+    (7) sentencia -> . llamada_funcion PUNTOYCOMA
+    (27) sentencia -> . NUMERO ID IGUAL NUMERO PUNTOYCOMA
+    (8) sentencia_for -> . FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (31) sentencia_for -> . FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (32) sentencia_for -> . FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER
+    (9) asignacion -> . ID IGUAL NUMERO
+    (10) asignacion -> . ID IGUAL ID
+    (28) asignacion -> . NUMERO ID
+    (29) asignacion -> . OPERADOR NUMERO
+    (30) asignacion -> . ID ID
+    (21) llamada_funcion -> . SYSTEM PUNTO PRINT PARENTESIS_IZQ parametros PARENTESIS_DER
+    (33) llamada_funcion -> . SYSTEM PUNTO PRINT parametros PARENTESIS_DER
+
+    LLAVE_DER       reduce using rule 4 (sentencias -> .)
+    NUMERO          shift and go to state 7
+    FOR             shift and go to state 9
+    ID              shift and go to state 8
+    OPERADOR        shift and go to state 10
+    SYSTEM          shift and go to state 11
+
+    asignacion                     shift and go to state 5
+    cuerpo                         shift and go to state 83
+    sentencias                     shift and go to state 77
+    sentencia                      shift and go to state 3
+    sentencia_for                  shift and go to state 4
+    llamada_funcion                shift and go to state 6
+
+state 80
+
+    (8) sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo . LLAVE_DER
+
+    LLAVE_DER       shift and go to state 84
+
+
+state 81
+
+    (32) sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .
+
+    NUMERO          reduce using rule 32 (sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    FOR             reduce using rule 32 (sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    ID              reduce using rule 32 (sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    OPERADOR        reduce using rule 32 (sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    SYSTEM          reduce using rule 32 (sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    $end            reduce using rule 32 (sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    LLAVE_DER       reduce using rule 32 (sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+
+
+state 82
+
+    (18) incremento -> ID IGUAL ID OPERADOR NUMERO .
+
+    PARENTESIS_DER  reduce using rule 18 (incremento -> ID IGUAL ID OPERADOR NUMERO .)
+    LLAVE_DER       reduce using rule 18 (incremento -> ID IGUAL ID OPERADOR NUMERO .)
+
+
+state 83
+
+    (31) sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo . LLAVE_DER
+
+    LLAVE_DER       shift and go to state 85
+
+
+state 84
+
+    (8) sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .
+
+    NUMERO          reduce using rule 8 (sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    FOR             reduce using rule 8 (sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    ID              reduce using rule 8 (sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    OPERADOR        reduce using rule 8 (sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    SYSTEM          reduce using rule 8 (sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    $end            reduce using rule 8 (sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    LLAVE_DER       reduce using rule 8 (sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+
+
+state 85
+
+    (31) sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER .
+
+    NUMERO          reduce using rule 31 (sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    FOR             reduce using rule 31 (sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    ID              reduce using rule 31 (sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    OPERADOR        reduce using rule 31 (sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    SYSTEM          reduce using rule 31 (sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    $end            reduce using rule 31 (sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+    LLAVE_DER       reduce using rule 31 (sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: reduce/reduce conflict in state 3 resolved using rule (sentencias -> sentencia)
+WARNING: rejected rule (sentencias -> <empty>) in state 3

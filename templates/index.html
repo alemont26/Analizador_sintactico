@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analizador Léxico y Sintáctico</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Analizador</h1>
+    <p>Introduce el código para analizar.</p>
+    
+    <form method="POST">
+        <textarea name="texto" rows="8" cols="50" placeholder="Ej: for(i=1; i>=0; i++){ system.print(&quot;hola&quot;, i); }">{{ request.form.get('texto', '') }}</textarea><br><br>
+        
+        <div class="button-container">
+            <button type="submit" name="accion" value="lexico">Análisis Léxico</button>
+            <button type="submit" name="accion" value="sintactico">Análisis Sintáctico</button>
+        </div>
+    </form>
+    {% if tipo_analisis == 'lexico' %}
+        <h2>Resultados del Análisis Léxico</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Tipo de Token</th>
+                    <th>Valor</th>
+                    <th>Línea</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for token in resultado_lexico %}
+                <tr>
+                    <td>{{ token.type }}</td>
+                    <td>{{ token.value }}</td>
+                    <td>{{ token.lineno }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    {% if tipo_analisis == 'sintactico' %}
+        <h2>Resultados del Análisis Sintáctico</h2>
+        {% if errores %}
+            <div class="errores-globales">
+                <strong>❌ Errores de Sintaxis Encontrados:</strong>
+                <ul>
+                {% for error in errores %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% else %}
+            <div class="ast-correcto">
+                <strong>✅ {{ resultado_sintactico }}</strong>
+            </div>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
