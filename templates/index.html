@@ -9,29 +9,58 @@
     <p>Introduce el código para analizar.</p>
     
     <form method="POST">
-        <textarea name="texto" rows="8" cols="50" placeholder="Ej: for(i=1; i>=0; i++){ system.print(&quot;hola&quot;, i); }">{{ request.form.get('texto', '') }}</textarea><br><br>
+        <textarea name="texto" rows="8" cols="50" placeholder="Ej: programa suma(){ int a,b,c; read a; read b; c=a+b; printf(&quot;la suma es&quot;); end; }">{{ request.form.get('texto', '') }}</textarea><br><br>
         
         <div class="button-container">
             <button type="submit" name="accion" value="lexico">Análisis Léxico</button>
             <button type="submit" name="accion" value="sintactico">Análisis Sintáctico</button>
         </div>
     </form>
+
     {% if tipo_analisis == 'lexico' %}
         <h2>Resultados del Análisis Léxico</h2>
         <table border="1">
             <thead>
                 <tr>
-                    <th>Tipo de Token</th>
-                    <th>Valor</th>
-                    <th>Línea</th>
+                    <th>TOKEN</th>
+                    <th>PR</th>
+                    <th>ID</th>
+                    <th>CADENA</th>
+                    <th>NUMERO</th>
+                    <th>SIMBOLO</th>
+                    <th>TIPO</th>
                 </tr>
             </thead>
             <tbody>
                 {% for token in resultado_lexico %}
                 <tr>
-                    <td>{{ token.type }}</td>
                     <td>{{ token.value }}</td>
-                    <td>{{ token.lineno }}</td>
+                    <td class="marca">
+                        {% if token.type in ['PROGRAMA', 'INT', 'READ', 'PRINTF', 'END', 'FOR', 'SYSTEM', 'PRINT'] %}
+                            X
+                        {% endif %}
+                    </td>
+                    <td class="marca">
+                        {% if token.type == 'ID' %}
+                            X
+                        {% endif %}
+                    </td>
+                    <td class="marca">
+                        {% if token.type == 'CADENA' %}
+                            X
+                        {% endif %}
+                    </td>
+                    <td class="marca">
+                        {% if token.type == 'NUMERO' %}
+                            X
+                        {% endif %}
+                    </td>
+                    <td class="marca">
+                        {% if token.type in ['IGUAL', 'PUNTOYCOMA', 'MAYOR', 'MENOR', 'MAYORIGUAL', 'MENORIGUAL', 'PARENTESIS_IZQ', 'PARENTESIS_DER', 'LLAVE_IZQ', 'LLAVE_DER', 'MASMAS', 'MENOSMENOS', 'PUNTO', 'COMA', 'OPERADOR', 'MAS', 'MENOS'] %}
+                            X
+                        {% endif %}
+                    </td>
+                    <td>{{ token.type }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

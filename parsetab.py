@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'CADENA COMA FOR ID IGUAL LLAVE_DER LLAVE_IZQ MASMAS MAYOR MAYORIGUAL MENOR MENORIGUAL MENOSMENOS NUMERO OPERADOR PARENTESIS_DER PARENTESIS_IZQ PRINT PUNTO PUNTOYCOMA SYSTEM\nprograma : sentencias\n\nsentencias : sentencia sentencias \n            | sentencia\n            | \n\nsentencia : sentencia_for\n            | asignacion PUNTOYCOMA\n            | llamada_funcion PUNTOYCOMA\n\nsentencia_for : FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER\n\nasignacion : ID IGUAL NUMERO\n            | ID IGUAL ID\n\ncondicion : ID MAYORIGUAL NUMERO\n            | ID MENOR NUMERO\n            | ID MAYOR NUMERO\n            | ID MENORIGUAL NUMERO\n            | ID IGUAL NUMERO\n\nincremento : ID MASMAS\n            | ID MENOSMENOS\n            | ID IGUAL ID OPERADOR NUMERO\n            | ID OPERADOR OPERADOR\n\ncuerpo : sentencias\n\nllamada_funcion : SYSTEM PUNTO PRINT PARENTESIS_IZQ parametros PARENTESIS_DER\n\nparametros : CADENA COMA ID\n            | CADENA\n            | ID\n            | NUMERO\n            | \n\nsentencia : NUMERO ID IGUAL NUMERO PUNTOYCOMA\n\nasignacion : NUMERO ID\n          | OPERADOR NUMERO\n          | ID ID\n\nsentencia_for : FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER\n\nsentencia_for : FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER\n\nllamada_funcion : SYSTEM PUNTO PRINT parametros PARENTESIS_DER\n'
+_lr_signature = 'CADENA COMA END FOR ID IGUAL INT LLAVE_DER LLAVE_IZQ MAS MASMAS MAYOR MAYORIGUAL MENOR MENORIGUAL MENOS MENOSMENOS NUMERO OPERADOR PARENTESIS_DER PARENTESIS_IZQ PRINT PRINTF PROGRAMA PUNTO PUNTOYCOMA READ SYSTEM\nprograma_completo : PROGRAMA ID PARENTESIS_IZQ PARENTESIS_DER LLAVE_IZQ declaraciones sentencias END PUNTOYCOMA LLAVE_DER\n                | sentencias\n\ndeclaraciones : declaracion declaraciones\n            | declaracion\n            | \n\ndeclaracion : INT lista_variables PUNTOYCOMA\n\nlista_variables : ID COMA lista_variables\n                | ID\n\nsentencias : sentencia sentencias \n            | sentencia\n            | \n\nsentencia : sentencia_for\n        | asignacion PUNTOYCOMA\n        | llamada_funcion PUNTOYCOMA\n        | lectura PUNTOYCOMA\n        | escritura PUNTOYCOMA\n\nlectura : READ ID\n\nescritura : PRINTF PARENTESIS_IZQ CADENA PARENTESIS_DER\n\nsentencia_for : FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER\n\nasignacion : ID IGUAL NUMERO\n        | ID IGUAL ID\n        | ID IGUAL expresion\n\nexpresion : ID MAS ID\n        | ID MENOS ID  \n        | ID MAS NUMERO\n        | ID MENOS NUMERO\n        | NUMERO MAS NUMERO\n        | NUMERO MENOS NUMERO\n\ncondicion : ID MAYORIGUAL NUMERO\n        | ID MENOR NUMERO\n        | ID MAYOR NUMERO\n        | ID MENORIGUAL NUMERO\n        | ID IGUAL NUMERO\n\nincremento : ID MASMAS\n        | ID MENOSMENOS\n        | ID IGUAL ID OPERADOR NUMERO\n        | ID OPERADOR OPERADOR\n\ncuerpo : sentencias\n\nllamada_funcion : SYSTEM PUNTO PRINT PARENTESIS_IZQ parametros PARENTESIS_DER\n\nparametros : CADENA COMA ID\n        | CADENA\n        | ID\n        | NUMERO\n        | \n\nsentencia : NUMERO ID IGUAL NUMERO PUNTOYCOMA\n\nasignacion : NUMERO ID\n        | OPERADOR NUMERO\n        | ID ID\n\nprograma_completo : PROGRAMA ID LLAVE_IZQ\n\ndeclaracion : INT lista_variables sentencia\n'
     
-_lr_action_items = {'$end':([0,1,2,3,4,12,13,14,40,81,84,85,],[-4,0,-1,-3,-5,-2,-6,-7,-27,-32,-8,-31,]),'NUMERO':([0,3,4,10,13,14,17,18,19,22,28,35,40,43,44,45,46,47,71,75,78,79,81,84,85,],[7,7,-5,20,-6,-7,24,26,26,29,39,39,-27,55,56,57,58,59,7,7,82,7,-32,-8,-31,]),'FOR':([0,3,4,13,14,40,71,75,79,81,84,85,],[9,9,-5,-6,-7,-27,9,9,9,-32,-8,-31,]),'ID':([0,3,4,7,8,13,14,16,17,18,19,20,23,24,25,26,28,30,33,34,35,40,42,51,52,60,67,71,75,79,81,84,85,],[8,8,-5,15,16,-6,-7,-30,23,8,8,-29,-10,-9,32,33,38,32,-28,32,38,-27,54,62,54,54,72,8,8,8,-32,-8,-31,]),'OPERADOR':([0,3,4,13,14,18,19,40,54,68,71,72,75,79,81,84,85,],[10,10,-5,-6,-7,10,10,-27,68,73,10,78,10,10,-32,-8,-31,]),'SYSTEM':([0,3,4,13,14,40,71,75,79,81,84,85,],[11,11,-5,-6,-7,-27,11,11,11,-32,-8,-31,]),'LLAVE_DER':([3,4,12,13,14,40,65,66,69,71,73,75,76,77,79,80,81,82,83,84,85,],[-3,-5,-2,-6,-7,-27,-16,-17,74,-4,-19,-4,81,-20,-4,84,-32,-18,85,-8,-31,]),'PUNTOYCOMA':([5,6,15,16,20,23,24,25,27,29,31,33,41,48,50,55,56,57,58,59,61,],[13,14,-28,-30,-29,-10,-9,30,34,40,42,-28,52,60,-33,-11,-12,-13,-14,-15,-21,]),'IGUAL':([8,15,32,54,],[17,22,47,67,]),'PARENTESIS_IZQ':([9,28,],[18,35,]),'LLAVE_IZQ':([9,64,70,74,],[19,71,75,79,]),'PUNTO':([11,],[21,]),'PRINT':([21,],[28,]),'CADENA':([28,35,],[37,37,]),'PARENTESIS_DER':([28,35,36,37,38,39,49,53,62,63,65,66,73,82,],[-26,-26,50,-23,-24,-25,61,64,-22,70,-16,-17,-19,-18,]),'MAYORIGUAL':([32,],[43,]),'MENOR':([32,],[44,]),'MAYOR':([32,],[45,]),'MENORIGUAL':([32,],[46,]),'COMA':([37,],[51,]),'MASMAS':([54,],[65,]),'MENOSMENOS':([54,],[66,]),}
+_lr_action_items = {'PROGRAMA':([0,],[2,]),'$end':([0,1,4,5,6,20,21,22,23,24,32,58,102,106,],[-11,0,-2,-10,-12,-9,-13,-14,-15,-16,-49,-45,-1,-19,]),'NUMERO':([0,5,6,13,19,21,22,23,24,26,36,42,43,44,45,49,51,58,65,66,69,70,71,72,73,77,78,79,89,90,98,99,105,106,],[11,11,-12,27,34,-13,-14,-15,-16,38,46,53,55,56,57,64,-5,-45,11,-4,82,83,84,85,86,-3,11,-8,-6,-50,-7,11,107,-19,]),'FOR':([0,5,6,21,22,23,24,51,58,65,66,77,78,79,89,90,98,99,106,],[12,12,-12,-13,-14,-15,-16,-5,-45,12,-4,-3,12,-8,-6,-50,-7,12,-19,]),'ID':([0,2,3,5,6,11,15,19,21,22,23,24,26,38,42,43,47,49,51,58,65,66,67,68,75,77,78,79,89,90,91,95,98,99,106,],[3,17,18,3,-12,25,29,33,-13,-14,-15,-16,3,48,52,54,60,63,-5,-45,3,-4,79,81,87,-3,3,-8,-6,-50,79,100,-7,3,-19,]),'OPERADOR':([0,5,6,21,22,23,24,26,51,58,65,66,77,78,79,81,89,90,96,98,99,100,106,],[13,13,-12,-13,-14,-15,-16,13,-5,-45,13,-4,-3,13,-8,96,-6,-50,101,-7,13,105,-19,]),'SYSTEM':([0,5,6,21,22,23,24,51,58,65,66,77,78,79,89,90,98,99,106,],[14,14,-12,-13,-14,-15,-16,-5,-45,14,-4,-3,14,-8,-6,-50,-7,14,-19,]),'READ':([0,5,6,21,22,23,24,51,58,65,66,77,78,79,89,90,98,99,106,],[15,15,-12,-13,-14,-15,-16,-5,-45,15,-4,-3,15,-8,-6,-50,-7,15,-19,]),'PRINTF':([0,5,6,21,22,23,24,51,58,65,66,77,78,79,89,90,98,99,106,],[16,16,-12,-13,-14,-15,-16,-5,-45,16,-4,-3,16,-8,-6,-50,-7,16,-19,]),'IGUAL':([3,25,60,81,],[19,36,73,95,]),'END':([5,6,20,21,22,23,24,51,58,65,66,76,77,89,90,106,],[-10,-12,-9,-13,-14,-15,-16,-5,-45,-11,-4,88,-3,-6,-50,-19,]),'LLAVE_DER':([5,6,20,21,22,23,24,58,97,99,103,104,106,],[-10,-12,-9,-13,-14,-15,-16,-45,102,-11,106,-38,-19,]),'INT':([6,21,22,23,24,51,58,66,89,90,106,],[-12,-13,-14,-15,-16,67,-45,67,-6,-50,-19,]),'PUNTOYCOMA':([7,8,9,10,18,25,27,29,33,34,35,37,46,48,50,52,53,54,55,56,57,59,74,78,79,82,83,84,85,86,88,98,],[21,22,23,24,-48,-46,-47,-17,-21,-20,-22,47,58,-46,-18,-23,-25,-24,-26,-27,-28,68,-39,89,-8,-29,-30,-31,-32,-33,97,-7,]),'PARENTESIS_IZQ':([12,16,17,39,],[26,30,31,49,]),'PUNTO':([14,],[28,]),'LLAVE_IZQ':([17,41,92,],[32,51,99,]),'PRINT':([28,],[39,]),'CADENA':([30,49,],[40,62,]),'PARENTESIS_DER':([31,40,49,61,62,63,64,80,87,93,94,101,107,],[41,50,-44,74,-41,-42,-43,92,-40,-34,-35,-37,-36,]),'MAS':([33,34,],[42,44,]),'MENOS':([33,34,],[43,45,]),'MAYORIGUAL':([60,],[69,]),'MENOR':([60,],[70,]),'MAYOR':([60,],[71,]),'MENORIGUAL':([60,],[72,]),'COMA':([62,79,],[75,91,]),'MASMAS':([81,],[93,]),'MENOSMENOS':([81,],[94,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'programa':([0,],[1,]),'sentencias':([0,3,71,75,79,],[2,12,77,77,77,]),'sentencia':([0,3,71,75,79,],[3,3,3,3,3,]),'sentencia_for':([0,3,71,75,79,],[4,4,4,4,4,]),'asignacion':([0,3,18,19,71,75,79,],[5,5,25,27,5,5,5,]),'llamada_funcion':([0,3,71,75,79,],[6,6,6,6,6,]),'condicion':([25,30,34,],[31,41,48,]),'parametros':([28,35,],[36,49,]),'incremento':([42,52,60,],[53,63,69,]),'cuerpo':([71,75,79,],[76,80,83,]),}
+_lr_goto_items = {'programa_completo':([0,],[1,]),'sentencias':([0,5,65,99,],[4,20,76,104,]),'sentencia':([0,5,65,78,99,],[5,5,5,90,5,]),'sentencia_for':([0,5,65,78,99,],[6,6,6,6,6,]),'asignacion':([0,5,26,65,78,99,],[7,7,37,7,7,7,]),'llamada_funcion':([0,5,65,78,99,],[8,8,8,8,8,]),'lectura':([0,5,65,78,99,],[9,9,9,9,9,]),'escritura':([0,5,65,78,99,],[10,10,10,10,10,]),'expresion':([19,],[35,]),'condicion':([47,],[59,]),'parametros':([49,],[61,]),'declaraciones':([51,66,],[65,77,]),'declaracion':([51,66,],[66,66,]),'lista_variables':([67,91,],[78,98,]),'incremento':([68,],[80,]),'cuerpo':([99,],[103,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,38 +26,55 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> programa","S'",1,None,None,None),
-  ('programa -> sentencias','programa',1,'p_programa','parser.py',8),
-  ('sentencias -> sentencia sentencias','sentencias',2,'p_sentencias','parser.py',14),
-  ('sentencias -> sentencia','sentencias',1,'p_sentencias','parser.py',15),
-  ('sentencias -> <empty>','sentencias',0,'p_sentencias','parser.py',16),
-  ('sentencia -> sentencia_for','sentencia',1,'p_sentencia','parser.py',22),
-  ('sentencia -> asignacion PUNTOYCOMA','sentencia',2,'p_sentencia','parser.py',23),
-  ('sentencia -> llamada_funcion PUNTOYCOMA','sentencia',2,'p_sentencia','parser.py',24),
-  ('sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER','sentencia_for',11,'p_sentencia_for','parser.py',30),
-  ('asignacion -> ID IGUAL NUMERO','asignacion',3,'p_asignacion','parser.py',36),
-  ('asignacion -> ID IGUAL ID','asignacion',3,'p_asignacion','parser.py',37),
-  ('condicion -> ID MAYORIGUAL NUMERO','condicion',3,'p_condicion','parser.py',43),
-  ('condicion -> ID MENOR NUMERO','condicion',3,'p_condicion','parser.py',44),
-  ('condicion -> ID MAYOR NUMERO','condicion',3,'p_condicion','parser.py',45),
-  ('condicion -> ID MENORIGUAL NUMERO','condicion',3,'p_condicion','parser.py',46),
-  ('condicion -> ID IGUAL NUMERO','condicion',3,'p_condicion','parser.py',47),
-  ('incremento -> ID MASMAS','incremento',2,'p_incremento','parser.py',53),
-  ('incremento -> ID MENOSMENOS','incremento',2,'p_incremento','parser.py',54),
-  ('incremento -> ID IGUAL ID OPERADOR NUMERO','incremento',5,'p_incremento','parser.py',55),
-  ('incremento -> ID OPERADOR OPERADOR','incremento',3,'p_incremento','parser.py',56),
-  ('cuerpo -> sentencias','cuerpo',1,'p_cuerpo','parser.py',65),
-  ('llamada_funcion -> SYSTEM PUNTO PRINT PARENTESIS_IZQ parametros PARENTESIS_DER','llamada_funcion',6,'p_llamada_funcion','parser.py',71),
-  ('parametros -> CADENA COMA ID','parametros',3,'p_parametros','parser.py',77),
-  ('parametros -> CADENA','parametros',1,'p_parametros','parser.py',78),
-  ('parametros -> ID','parametros',1,'p_parametros','parser.py',79),
-  ('parametros -> NUMERO','parametros',1,'p_parametros','parser.py',80),
-  ('parametros -> <empty>','parametros',0,'p_parametros','parser.py',81),
-  ('sentencia -> NUMERO ID IGUAL NUMERO PUNTOYCOMA','sentencia',5,'p_sentencia_error_numero_id','parser.py',92),
-  ('asignacion -> NUMERO ID','asignacion',2,'p_asignacion_error','parser.py',99),
-  ('asignacion -> OPERADOR NUMERO','asignacion',2,'p_asignacion_error','parser.py',100),
-  ('asignacion -> ID ID','asignacion',2,'p_asignacion_error','parser.py',101),
-  ('sentencia_for -> FOR LLAVE_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento LLAVE_DER LLAVE_IZQ cuerpo LLAVE_DER','sentencia_for',11,'p_for_error_parentesis','parser.py',112),
-  ('sentencia_for -> FOR PARENTESIS_IZQ asignacion condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER','sentencia_for',10,'p_for_error_puntoycoma','parser.py',119),
-  ('llamada_funcion -> SYSTEM PUNTO PRINT parametros PARENTESIS_DER','llamada_funcion',5,'p_llamada_error_parentesis','parser.py',126),
+  ("S' -> programa_completo","S'",1,None,None,None),
+  ('programa_completo -> PROGRAMA ID PARENTESIS_IZQ PARENTESIS_DER LLAVE_IZQ declaraciones sentencias END PUNTOYCOMA LLAVE_DER','programa_completo',10,'p_programa_completo','parser.py',8),
+  ('programa_completo -> sentencias','programa_completo',1,'p_programa_completo','parser.py',9),
+  ('declaraciones -> declaracion declaraciones','declaraciones',2,'p_declaraciones','parser.py',18),
+  ('declaraciones -> declaracion','declaraciones',1,'p_declaraciones','parser.py',19),
+  ('declaraciones -> <empty>','declaraciones',0,'p_declaraciones','parser.py',20),
+  ('declaracion -> INT lista_variables PUNTOYCOMA','declaracion',3,'p_declaracion','parser.py',26),
+  ('lista_variables -> ID COMA lista_variables','lista_variables',3,'p_lista_variables','parser.py',32),
+  ('lista_variables -> ID','lista_variables',1,'p_lista_variables','parser.py',33),
+  ('sentencias -> sentencia sentencias','sentencias',2,'p_sentencias','parser.py',42),
+  ('sentencias -> sentencia','sentencias',1,'p_sentencias','parser.py',43),
+  ('sentencias -> <empty>','sentencias',0,'p_sentencias','parser.py',44),
+  ('sentencia -> sentencia_for','sentencia',1,'p_sentencia','parser.py',50),
+  ('sentencia -> asignacion PUNTOYCOMA','sentencia',2,'p_sentencia','parser.py',51),
+  ('sentencia -> llamada_funcion PUNTOYCOMA','sentencia',2,'p_sentencia','parser.py',52),
+  ('sentencia -> lectura PUNTOYCOMA','sentencia',2,'p_sentencia','parser.py',53),
+  ('sentencia -> escritura PUNTOYCOMA','sentencia',2,'p_sentencia','parser.py',54),
+  ('lectura -> READ ID','lectura',2,'p_lectura','parser.py',60),
+  ('escritura -> PRINTF PARENTESIS_IZQ CADENA PARENTESIS_DER','escritura',4,'p_escritura','parser.py',66),
+  ('sentencia_for -> FOR PARENTESIS_IZQ asignacion PUNTOYCOMA condicion PUNTOYCOMA incremento PARENTESIS_DER LLAVE_IZQ cuerpo LLAVE_DER','sentencia_for',11,'p_sentencia_for','parser.py',72),
+  ('asignacion -> ID IGUAL NUMERO','asignacion',3,'p_asignacion','parser.py',78),
+  ('asignacion -> ID IGUAL ID','asignacion',3,'p_asignacion','parser.py',79),
+  ('asignacion -> ID IGUAL expresion','asignacion',3,'p_asignacion','parser.py',80),
+  ('expresion -> ID MAS ID','expresion',3,'p_expresion','parser.py',86),
+  ('expresion -> ID MENOS ID','expresion',3,'p_expresion','parser.py',87),
+  ('expresion -> ID MAS NUMERO','expresion',3,'p_expresion','parser.py',88),
+  ('expresion -> ID MENOS NUMERO','expresion',3,'p_expresion','parser.py',89),
+  ('expresion -> NUMERO MAS NUMERO','expresion',3,'p_expresion','parser.py',90),
+  ('expresion -> NUMERO MENOS NUMERO','expresion',3,'p_expresion','parser.py',91),
+  ('condicion -> ID MAYORIGUAL NUMERO','condicion',3,'p_condicion','parser.py',97),
+  ('condicion -> ID MENOR NUMERO','condicion',3,'p_condicion','parser.py',98),
+  ('condicion -> ID MAYOR NUMERO','condicion',3,'p_condicion','parser.py',99),
+  ('condicion -> ID MENORIGUAL NUMERO','condicion',3,'p_condicion','parser.py',100),
+  ('condicion -> ID IGUAL NUMERO','condicion',3,'p_condicion','parser.py',101),
+  ('incremento -> ID MASMAS','incremento',2,'p_incremento','parser.py',107),
+  ('incremento -> ID MENOSMENOS','incremento',2,'p_incremento','parser.py',108),
+  ('incremento -> ID IGUAL ID OPERADOR NUMERO','incremento',5,'p_incremento','parser.py',109),
+  ('incremento -> ID OPERADOR OPERADOR','incremento',3,'p_incremento','parser.py',110),
+  ('cuerpo -> sentencias','cuerpo',1,'p_cuerpo','parser.py',119),
+  ('llamada_funcion -> SYSTEM PUNTO PRINT PARENTESIS_IZQ parametros PARENTESIS_DER','llamada_funcion',6,'p_llamada_funcion','parser.py',125),
+  ('parametros -> CADENA COMA ID','parametros',3,'p_parametros','parser.py',131),
+  ('parametros -> CADENA','parametros',1,'p_parametros','parser.py',132),
+  ('parametros -> ID','parametros',1,'p_parametros','parser.py',133),
+  ('parametros -> NUMERO','parametros',1,'p_parametros','parser.py',134),
+  ('parametros -> <empty>','parametros',0,'p_parametros','parser.py',135),
+  ('sentencia -> NUMERO ID IGUAL NUMERO PUNTOYCOMA','sentencia',5,'p_sentencia_error_numero_id','parser.py',146),
+  ('asignacion -> NUMERO ID','asignacion',2,'p_asignacion_error','parser.py',153),
+  ('asignacion -> OPERADOR NUMERO','asignacion',2,'p_asignacion_error','parser.py',154),
+  ('asignacion -> ID ID','asignacion',2,'p_asignacion_error','parser.py',155),
+  ('programa_completo -> PROGRAMA ID LLAVE_IZQ','programa_completo',3,'p_programa_error_falta_parentesis','parser.py',166),
+  ('declaracion -> INT lista_variables sentencia','declaracion',3,'p_declaracion_error_puntoycoma','parser.py',173),
 ]

@@ -3,14 +3,19 @@ import ply.lex as lex
 palabras_reservadas = {
     'for': 'FOR',
     'system': 'SYSTEM',
-    'print': 'PRINT'
+    'print': 'PRINT',
+    'programa': 'PROGRAMA',
+    'int': 'INT',
+    'read': 'READ',
+    'printf': 'PRINTF',
+    'end': 'END'
 }
 
 tokens = [
     'ID', 'NUMERO', 'CADENA',
     'IGUAL', 'PUNTOYCOMA', 'MAYOR', 'MAYORIGUAL', 'MENOR', 'MENORIGUAL',
     'PARENTESIS_IZQ', 'PARENTESIS_DER', 'LLAVE_IZQ', 'LLAVE_DER',
-    'MASMAS', 'MENOSMENOS', 'PUNTO', 'COMA', 'OPERADOR'
+    'MASMAS', 'MENOSMENOS', 'PUNTO', 'COMA', 'OPERADOR', 'MAS', 'MENOS'
 ] + list(palabras_reservadas.values())
 
 t_PARENTESIS_IZQ = r'\('
@@ -25,7 +30,9 @@ t_MAYORIGUAL     = r'>='
 t_MENORIGUAL     = r'<='
 t_MAYOR          = r'>'
 t_MENOR          = r'<'
-t_OPERADOR       = r'[+\-*/]'
+t_MAS            = r'\+'
+t_MENOS          = r'-'
+t_OPERADOR       = r'[*/]'
 t_PUNTO          = r'\.'
 t_COMA           = r','
 t_CADENA         = r'\"(.*?)\"'
